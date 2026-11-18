@@ -12,8 +12,18 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('backtests.index')" :active="request()->routeIs('backtests.index') || request()->routeIs('dashboard')">
+                        <span class="inline-flex items-center gap-1.5 font-medium">
+                            <svg class="w-4 h-4 text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            {{ __('History') }}
+                        </span>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('backtests.create')" :active="request()->routeIs('backtests.create')">
+                        <span class="inline-flex items-center gap-1.5 font-medium">
+                            <svg class="w-4 h-4 text-[#00b050]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            {{ __('New Backtest') }}
+                        </span>
                     </x-nav-link>
                 </div>
             </div>
@@ -67,8 +77,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('backtests.index')" :active="request()->routeIs('backtests.index') || request()->routeIs('dashboard')">
+                {{ __('History') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('backtests.create')" :active="request()->routeIs('backtests.create')">
+                {{ __('New Backtest') }}
             </x-responsive-nav-link>
         </div>
 
